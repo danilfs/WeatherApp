@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.weatherapp.R
 import com.example.weatherapp.data.Weather
+import com.example.weatherapp.data.WeatherDTO
 import com.example.weatherapp.data.WeatherLoader
 import com.example.weatherapp.databinding.FragmentDetailBinding
 
