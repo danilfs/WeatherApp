@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.data.Weather
@@ -36,17 +37,18 @@ class MainFragmentAdapter(private var onItemViewClickListener: MainFragment.OnIt
         holder.bind(weatherData[position])
     }
 
-    override fun getItemCount(): Int {
-        return weatherData.size
-    }
+    override fun getItemCount() = weatherData.size
 
     inner class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(weather: Weather) {
-            itemView.findViewById<TextView>(R.id.mainFragmentRecyclerItemTextView).text = weather.city?.city
-            itemView.setOnClickListener {
-                onItemViewClickListener?.onItemClick(weather)
+            itemView.apply {
+                findViewById<TextView>(R.id.mainFragmentRecyclerItemTextView).text = weather.city?.city
+                setOnClickListener {
+                    onItemViewClickListener?.onItemClick(weather)
+                }
             }
+
         }
     }
 }

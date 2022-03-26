@@ -1,18 +1,37 @@
 package com.example.weatherapp.view
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.weatherapp.R
 import com.example.weatherapp.data.Weather
+import com.example.weatherapp.data.WeatherDTO
+import com.example.weatherapp.data.WeatherLoader
 import com.example.weatherapp.databinding.FragmentDetailBinding
+
 
 class DetailsFragment : Fragment() {
 
+
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
+    private lateinit var weatherBundle: Weather
+
+    private val loadListener  =
+        object : WeatherLoader.WeatherLoaderListener {
+            override fun onLoaded(weatherDTO: WeatherDTO) {
+                displayWeather(weatherDTO)
+            }
+
+            override fun onFailed(throwable: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,30 +41,44 @@ class DetailsFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val weather = arguments?.getParcelable<Weather>(BUNDLE_EXTRA)
-        if (weather != null) {
-            val city = weather.city
-            binding.cityName.text = city?.city
-            binding.cityCoordinates.text = String.format(
+        arguments?.getParcelable<Weather>(BUNDLE_EXTRA)?.let { weather ->
+            weatherBundle = weather
+        }
+        binding.mainView.visibility = View.GONE
+        binding.loadingLayout.visibility = View.VISIBLE
+        loadWeather()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun loadWeather() {
+        val weatherLoader = WeatherLoader(loadListener, weatherBundle.city.lat, weatherBundle.city.lon)
+        weatherLoader.loadWeather()
+    }
+
+    private fun displayWeather(weatherDTO: WeatherDTO) {
+        with(binding) {
+            mainView.visibility = View.VISIBLE
+            loadingLayout.visibility = View.GONE
+            val city = weatherBundle.city
+            cityName.text = city.city
+            cityCoordinates.text = String.format(
                 getString(R.string.city_coordinates),
-                city?.lat.toString(),
-                city?.lon.toString()
+                city.lat.toString(),
+                city.lon.toString()
             )
-            binding.temperatureValue.text = weather.temperature.toString()
-            binding.feelsLikeValue.text = weather.feelsLike.toString()
+            weatherCondition.text = weatherDTO.fact?.condition
+            temperatureValue.text = weatherDTO.fact?.temp.toString()
+            feelsLikeValue.text = weatherDTO.fact?.feelsLike.toString()
         }
     }
+
+
 
     companion object {
 
         const val BUNDLE_EXTRA = "weather"
-
-        fun newInstance(bundle: Bundle): DetailsFragment {
-            val fragment = DetailsFragment()
-            fragment.arguments = bundle
-            return fragment
-        }
     }
 }
