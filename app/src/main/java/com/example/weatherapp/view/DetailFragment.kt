@@ -16,6 +16,7 @@ import com.example.weatherapp.databinding.FragmentDetailBinding
 
 class DetailsFragment : Fragment() {
 
+
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var weatherBundle: Weather

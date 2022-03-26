@@ -14,6 +14,8 @@ import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
 
 class WeatherLoader(private val listener: WeatherLoaderListener, private val lat: Double, private val lon: Double) {
+    private val YOUR_API_KEY: String? = "21318628-54dd-4685-9404-cb6ed5d2b64c"
+
     interface WeatherLoaderListener {
         fun onLoaded(weatherDTO: WeatherDTO)
         fun onFailed(throwable: Throwable)
@@ -32,8 +34,9 @@ class WeatherLoader(private val listener: WeatherLoaderListener, private val lat
                     urlConnection.requestMethod = "GET"
                     urlConnection.addRequestProperty(
                         "X-Yandex-API-Key",
-                        BuildConfig.WEATHER_API_KEY
-                    )
+                        YOUR_API_KEY
+
+                        )
                     urlConnection.readTimeout = 10000
                     val bufferedReader =
                         BufferedReader(InputStreamReader(urlConnection.inputStream))
