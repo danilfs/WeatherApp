@@ -1,5 +1,6 @@
 package com.example.weatherapp.data
 
+
 interface IRepository {
     fun getWeatherFromServer(): Weather
     fun getWeatherFromLocalStorageRus(): List<Weather>

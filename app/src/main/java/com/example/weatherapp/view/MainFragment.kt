@@ -15,7 +15,6 @@ import com.example.weatherapp.hide
 import com.example.weatherapp.show
 import com.example.weatherapp.showSnackBar
 import com.example.weatherapp.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment() {
 
@@ -90,6 +89,14 @@ class MainFragment : Fragment() {
                 binding.mainFragmentLoadingLayout.show()
             }
             is AppState.Error -> {
+                binding.mainFragmentLoadingLayout.hide()
+                binding.mainFragmentFAB.showSnackBar(
+                    text = getString(R.string.error),
+                    actionText = getString(R.string.reload),
+                    action = { viewModel.getWeatherFromLocalSourceRus() }
+                )
+            }
+            else -> {
                 binding.mainFragmentLoadingLayout.hide()
                 binding.mainFragmentFAB.showSnackBar(
                     text = getString(R.string.error),
