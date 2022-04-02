@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment
 import com.example.weatherapp.R
 import java.util.*
 import java.util.concurrent.TimeUnit
-
 const val TEST_BROADCAST_INTENT_FILTER = "TEST BROADCAST INTENT FILTER"
 const val THREADS_FRAGMENT_BROADCAST_EXTRA = "THREADS_FRAGMENT_EXTRA"
 
@@ -138,7 +137,7 @@ class ThreadsFragment : Fragment() {
                 it.startService(Intent(it, MainService::class.java).apply {
                     putExtra(
                         MAIN_SERVICE_STRING_EXTRA,
-                        " gfdjkgjs"
+                        " I'm fdgbxdfhbxfb"
                     )
                 })
             }
