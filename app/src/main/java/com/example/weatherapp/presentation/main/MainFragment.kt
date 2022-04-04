@@ -1,4 +1,4 @@
-package com.example.weatherapp.view
+package com.example.weatherapp.presentation.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.R
-import com.example.weatherapp.data.AppState
-import com.example.weatherapp.data.Weather
+import com.example.weatherapp.data.states.AppState
+import com.example.weatherapp.data.localData.dto.Weather
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.example.weatherapp.hide
 import com.example.weatherapp.show
 import com.example.weatherapp.showSnackBar
-import com.example.weatherapp.viewmodel.MainViewModel
+import com.example.weatherapp.view.DetailsFragment
 
 class MainFragment : Fragment() {
 

@@ -1,5 +1,6 @@
-package com.example.weatherapp.data
+package com.example.weatherapp.data.details
 
+import com.example.weatherapp.data.localData.dto.WeatherDTO
 import retrofit2.Callback
 
 class DetailsRepository(private val remoteDataSource: RemoteDataSource) : IDetailsRepository {

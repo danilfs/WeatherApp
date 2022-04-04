@@ -1,9 +1,14 @@
-package com.example.weatherapp.view
+package com.example.weatherapp.presentation.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.weatherapp.data.*
+import com.example.weatherapp.data.details.DetailsRepository
+import com.example.weatherapp.data.details.IDetailsRepository
+import com.example.weatherapp.data.details.RemoteDataSource
+import com.example.weatherapp.data.localData.dto.WeatherDTO
+import com.example.weatherapp.data.localData.dto.convertDtoToModel
+import com.example.weatherapp.data.states.AppState
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,7 +43,8 @@ class DetailsViewModel(
         }
 
         override fun onFailure(call: Call<WeatherDTO>, t: Throwable) {
-            detailsLiveData.postValue(AppState.Error(Throwable(t.message ?:
+            detailsLiveData.postValue(
+                AppState.Error(Throwable(t.message ?:
             REQUEST_ERROR)))
 
         }

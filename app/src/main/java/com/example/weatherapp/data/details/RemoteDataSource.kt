@@ -1,6 +1,7 @@
-package com.example.weatherapp.data
+package com.example.weatherapp.data.details
 
 import com.example.weatherapp.BuildConfig
+import com.example.weatherapp.data.localData.dto.WeatherDTO
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

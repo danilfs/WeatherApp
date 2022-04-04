@@ -15,13 +15,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import com.example.weatherapp.R
+import com.example.weatherapp.databinding.FragmentThreadBinding
 import java.util.*
 import java.util.concurrent.TimeUnit
 const val TEST_BROADCAST_INTENT_FILTER = "TEST BROADCAST INTENT FILTER"
 const val THREADS_FRAGMENT_BROADCAST_EXTRA = "THREADS_FRAGMENT_EXTRA"
 
 class ThreadsFragment : Fragment() {
-    private var _binding: FragmentThreadsBinding? = null
+    private var _binding: FragmentThreadBinding? = null
     private val binding get() = _binding!!
     private var counterThread = 0
 
@@ -59,7 +60,7 @@ class ThreadsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentThreadsBinding.inflate(inflater, container, false)
+        _binding = FragmentThreadBinding.inflate(inflater, container, false)
         return binding.root
     }
 

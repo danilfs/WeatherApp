@@ -1,9 +1,5 @@
 package com.example.weatherapp.view
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,9 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.weatherapp.*
-import com.example.weatherapp.data.*
+import com.example.weatherapp.data.localData.dto.Weather
+import com.example.weatherapp.data.states.AppState
 import com.example.weatherapp.databinding.FragmentDetailBinding
-import com.example.weatherapp.experiment.TestForeground
+import com.example.weatherapp.presentation.details.DetailsViewModel
 
 
 class DetailsFragment : Fragment() {

@@ -1,4 +1,7 @@
-package com.example.weatherapp.data
+package com.example.weatherapp.data.states
+
+import com.example.weatherapp.data.localData.dto.Weather
+
 
 
 sealed class AppState {

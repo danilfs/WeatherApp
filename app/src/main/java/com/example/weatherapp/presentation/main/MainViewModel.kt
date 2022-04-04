@@ -1,11 +1,11 @@
-package com.example.weatherapp.viewmodel
+package com.example.weatherapp.presentation.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.weatherapp.data.AppState
-import com.example.weatherapp.data.IRepository
-import com.example.weatherapp.data.Repository
+import com.example.weatherapp.data.states.AppState
+import com.example.weatherapp.data.localData.data.IRepository
+import com.example.weatherapp.data.localData.data.Repository
 import java.lang.Thread.sleep
 
 class MainViewModel(

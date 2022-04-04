@@ -1,4 +1,4 @@
-package com.example.weatherapp.view
+package com.example.weatherapp.presentation.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
-import com.example.weatherapp.data.Weather
+import com.example.weatherapp.data.localData.dto.Weather
 
 class MainFragmentAdapter(private var onItemViewClickListener: MainFragment.OnItemViewClickListener?)  :
     RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {

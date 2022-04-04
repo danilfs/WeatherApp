@@ -1,5 +1,6 @@
-package com.example.weatherapp.data
+package com.example.weatherapp.data.details
 
+import com.example.weatherapp.data.localData.dto.WeatherDTO
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
