@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.experiment.MainBroadCastReceiver
+import com.example.weatherapp.experiment.contentProvider.ContentProviderFragment
 import com.example.weatherapp.presentation.history.HistoryFragment
 import com.example.weatherapp.presentation.main.MainFragment
 
@@ -29,6 +30,12 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container, fragment)
             .commit()
     }
+    private fun openFragmentAddBackStack(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -49,8 +56,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            R.id.menu_content_provider -> {
+                openFragmentAddBackStack(ContentProviderFragment())
+            true
+        }
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
+

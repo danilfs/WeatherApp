@@ -8,7 +8,7 @@ fun convertEntityToWeather(entityList: List<HistoryEntity>): List<Weather> =
     entityList.map {
         Weather(
             city = City(it.city, 0.0, 0.0), temperature = it.temperature, feelsLike = 0,
-            condition = it.condition
+            condition = it.condition, id = it.id
         )
     }
 
