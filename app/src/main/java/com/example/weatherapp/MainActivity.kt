@@ -10,6 +10,7 @@ import com.example.weatherapp.experiment.MainBroadCastReceiver
 import com.example.weatherapp.experiment.contentProvider.ContentProviderFragment
 import com.example.weatherapp.presentation.history.HistoryFragment
 import com.example.weatherapp.presentation.main.MainFragment
+import com.example.weatherapp.presentation.maps.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,15 +31,12 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container, fragment)
             .commit()
     }
+
     private fun openFragmentAddBackStack(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .addToBackStack(null)
             .commit()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -58,8 +56,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_content_provider -> {
                 openFragmentAddBackStack(ContentProviderFragment())
-            true
-        }
+                true
+            }
+            R.id.menu_maps -> {
+                openFragmentAddBackStack(SearchFragment())
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
