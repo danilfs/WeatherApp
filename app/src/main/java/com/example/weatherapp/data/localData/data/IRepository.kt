@@ -1,4 +1,7 @@
-package com.example.weatherapp.data
+package com.example.weatherapp.data.localData.data
+
+import com.example.weatherapp.data.localData.dto.Weather
+
 
 interface IRepository {
     fun getWeatherFromServer(): Weather
