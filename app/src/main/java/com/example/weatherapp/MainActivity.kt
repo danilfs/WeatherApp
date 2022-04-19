@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+//            if (it.isComplete) {
+//                val firebaseToken = it.result.toString()
+//            }
+//        }
         if (savedInstanceState == null) {
             openFragment(MainFragment.newInstance())
 //            openFragment(ThreadsFragment.newInstance())
@@ -66,4 +71,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
